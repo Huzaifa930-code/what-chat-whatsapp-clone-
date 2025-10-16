@@ -86,19 +86,6 @@ business-communication-platform/
 ```
 
 
-## 🔒 Environment Variables
-
-Create a `.env` file in the server directory:
-```env
-PORT=5000
-JWT_SECRET=your_jwt_secret_here
-EVOLUTION_API_KEY=your_evolution_api_key
-EVOLUTION_API_URL=your_evolution_api_url
-NODE_ENV=development
-```
-
-**Note:** Never commit your `.env` file to version control!
-
 ## 🎯 Future Enhancements
 
 Potential features for future versions:
