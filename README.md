@@ -85,43 +85,6 @@ business-communication-platform/
 └── README.md
 ```
 
-## 🚀 Installation & Setup
-
-**Prerequisites:**
-- Node.js (v14 or higher)
-- npm or yarn
-- Evolution API credentials
-
-**Backend Setup:**
-```bash
-# Navigate to server directory
-cd server
-
-# Install dependencies
-npm install
-
-# Create .env file with your credentials
-# Add your Evolution API keys and configuration
-
-# Start the server
-npm start
-```
-
-**Frontend Setup:**
-```bash
-# Navigate to client directory
-cd client
-
-# Install dependencies
-npm install
-
-# Start the development server
-npm start
-```
-
-The application will run on:
-- Frontend: `http://localhost:3000`
-- Backend: `http://localhost:5000`
 
 ## 🔒 Environment Variables
 
@@ -142,7 +105,6 @@ Potential features for future versions:
 
 - [ ] Group chat functionality
 - [ ] File and media sharing
-- [ ] Voice and video calling
 - [ ] Message encryption (end-to-end)
 - [ ] Chat history search
 - [ ] User profiles and settings
