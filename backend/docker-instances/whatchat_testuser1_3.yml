@@ -1,0 +1,119 @@
+version: '3.8'
+services:
+  postgres:
+    image: postgres:15-alpine
+    container_name: whatchat_testuser1_3_postgres
+    environment:
+      POSTGRES_USER: user_3
+      POSTGRES_PASSWORD: OEBLMrFjAr34ue6w3gWzvLIfGNaAktGJ
+      POSTGRES_DB: evolution_3
+      PGDATA: /var/lib/postgresql/data/pgdata
+    volumes:
+      - whatchat_testuser1_3_postgres_data:/var/lib/postgresql/data
+    networks:
+      - whatchat_testuser1_3_network
+    restart: unless-stopped
+    ports:
+      - '9001:5432'
+    healthcheck:
+      test:
+        - CMD-SHELL
+        - pg_isready -U user_3
+      interval: 10s
+      timeout: 5s
+      retries: 5
+  redis:
+    image: redis:7-alpine
+    container_name: whatchat_testuser1_3_redis
+    command: redis-server --appendonly yes
+    volumes:
+      - whatchat_testuser1_3_redis_data:/data
+    networks:
+      - whatchat_testuser1_3_network
+    restart: unless-stopped
+    ports:
+      - '9002:6379'
+    healthcheck:
+      test:
+        - CMD
+        - redis-cli
+        - ping
+      interval: 10s
+      timeout: 5s
+      retries: 5
+  evolution_api:
+    image: atendai/evolution-api:latest
+    container_name: whatchat_testuser1_3_api
+    ports:
+      - '9000:8080'
+    environment:
+      SERVER_URL: http://localhost:9000
+      SERVER_PORT: '8080'
+      AUTHENTICATION_API_KEY: r2DFMfiNXWWqW3Y5o6i6qJy90EQIhSJK
+      DATABASE_ENABLED: 'true'
+      DATABASE_PROVIDER: postgresql
+      DATABASE_CONNECTION_URI: >-
+        postgresql://user_3:OEBLMrFjAr34ue6w3gWzvLIfGNaAktGJ@postgres:5432/evolution_3
+      DATABASE_SAVE_DATA_INSTANCE: 'true'
+      DATABASE_SAVE_DATA_NEW_MESSAGE: 'true'
+      DATABASE_SAVE_MESSAGE_UPDATE: 'true'
+      DATABASE_SAVE_DATA_CONTACTS: 'true'
+      DATABASE_SAVE_DATA_CHATS: 'true'
+      CACHE_REDIS_ENABLED: 'true'
+      CACHE_REDIS_URI: redis://redis:6379
+      CACHE_REDIS_PREFIX_KEY: evolution_3
+      CACHE_REDIS_SAVE_INSTANCES: 'true'
+      WEBHOOK_GLOBAL_ENABLED: 'false'
+      WEBSOCKET_ENABLED: 'false'
+      RABBITMQ_ENABLED: 'false'
+      SQS_ENABLED: 'false'
+      TYPEBOT_ENABLED: 'false'
+      CHATWOOT_ENABLED: 'false'
+      PROXY_ENABLED: 'false'
+      CONFIG_SESSION_PHONE_VERSION: 2.3000.1026080446
+      LOG_LEVEL: INFO
+      LOG_COLOR: 'true'
+      LOG_BAILEYS: error
+      DEL_INSTANCE: 'false'
+      DEL_TEMP_INSTANCES: 'true'
+      STORE_MESSAGES: 'true'
+      STORE_MESSAGE_UP: 'true'
+      STORE_CONTACTS: 'true'
+      STORE_CHATS: 'true'
+      CLEAN_STORE_CLEANING_INTERVAL: '7200'
+      CLEAN_STORE_MESSAGES: 'true'
+      CLEAN_STORE_MESSAGE_UP: 'true'
+      CLEAN_STORE_CONTACTS: 'true'
+      CLEAN_STORE_CHATS: 'true'
+    volumes:
+      - whatchat_testuser1_3_instances:/evolution/instances
+      - whatchat_testuser1_3_store:/evolution/store
+    networks:
+      - whatchat_testuser1_3_network
+    depends_on:
+      postgres:
+        condition: service_healthy
+      redis:
+        condition: service_healthy
+    restart: unless-stopped
+    healthcheck:
+      test:
+        - CMD-SHELL
+        - curl -f http://localhost:8080 || exit 1
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 40s
+networks:
+  whatchat_testuser1_3_network:
+    driver: bridge
+    name: whatchat_testuser1_3_network
+volumes:
+  whatchat_testuser1_3_postgres_data:
+    name: whatchat_testuser1_3_postgres_data
+  whatchat_testuser1_3_redis_data:
+    name: whatchat_testuser1_3_redis_data
+  whatchat_testuser1_3_instances:
+    name: whatchat_testuser1_3_instances_data
+  whatchat_testuser1_3_store:
+    name: whatchat_testuser1_3_store_data

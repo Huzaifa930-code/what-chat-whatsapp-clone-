@@ -1,0 +1,25 @@
+version: '3.8'
+
+services:
+  postgres:
+    image: postgres:15-alpine
+    container_name: whatchat_system_db
+    environment:
+      POSTGRES_USER: whatchat_admin
+      POSTGRES_PASSWORD: SecurePass2024
+      POSTGRES_DB: whatchat_system
+      PGDATA: /var/lib/postgresql/data/pgdata
+    ports:
+      - "5433:5432"
+    volumes:
+      - whatchat_system_data:/var/lib/postgresql/data
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U whatchat_admin"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+volumes:
+  whatchat_system_data:
+    name: whatchat_system_data

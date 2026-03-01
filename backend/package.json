@@ -1,0 +1,22 @@
+{
+  "name": "whatchat-backend",
+  "version": "1.0.0",
+  "type": "module",
+  "description": "Multi-user WhatsApp backend API",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "node --watch server.js",
+    "db:init": "node database/init.js"
+  },
+  "dependencies": {
+    "express": "^4.18.2",
+    "cors": "^2.8.5",
+    "bcrypt": "^5.1.1",
+    "jsonwebtoken": "^9.0.2",
+    "pg": "^8.11.3",
+    "dotenv": "^16.3.1",
+    "axios": "^1.6.2",
+    "js-yaml": "^4.1.0"
+  }
+}

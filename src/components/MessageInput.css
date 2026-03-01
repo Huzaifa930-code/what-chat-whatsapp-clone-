@@ -1,0 +1,73 @@
+.message-input {
+  position: relative;
+  display: flex;
+  padding: 15px;
+  background: white;
+  border-top: 1px solid #e0e0e0;
+  gap: 10px;
+}
+
+.emoji-button {
+  background: transparent;
+  border: none;
+  font-size: 1.5rem;
+  cursor: pointer;
+  padding: 0.5rem;
+  transition: opacity 0.2s;
+}
+
+.emoji-button:hover:not(:disabled) {
+  opacity: 0.8;
+}
+
+.emoji-button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.emoji-picker-container {
+  position: absolute;
+  bottom: 70px;
+  left: 10px;
+  z-index: 1000;
+}
+
+.message-input-field {
+  flex: 1;
+  padding: 12px 15px;
+  border: 1px solid #ddd;
+  border-radius: 25px;
+  font-size: 14px;
+  outline: none;
+  transition: border-color 0.2s;
+}
+
+.message-input-field:focus {
+  border-color: #25d366;
+}
+
+.message-input-field:disabled {
+  background-color: #f5f5f5;
+  cursor: not-allowed;
+}
+
+.message-send-button {
+  padding: 12px 25px;
+  background: #25d366;
+  color: white;
+  border: none;
+  border-radius: 25px;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.message-send-button:hover:not(:disabled) {
+  background: #1da851;
+}
+
+.message-send-button:disabled {
+  background: #ccc;
+  cursor: not-allowed;
+}

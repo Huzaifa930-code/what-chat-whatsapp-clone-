@@ -1,0 +1,133 @@
+.qr-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background: linear-gradient(135deg, #00a884 0%, #008069 100%);
+}
+
+.qr-content {
+  background: #1f2c33;
+  padding: 3rem;
+  border-radius: 20px;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.4);
+  text-align: center;
+  max-width: 500px;
+}
+
+.qr-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 0.5rem;
+}
+
+.qr-content h1 {
+  font-size: 2.5rem;
+  color: #00a884;
+  margin: 0;
+  font-weight: 600;
+}
+
+.logout-btn-qr {
+  background: #ea4335;
+  color: white;
+  border: none;
+  padding: 0.5rem 1.25rem;
+  border-radius: 20px;
+  cursor: pointer;
+  font-size: 0.9rem;
+  font-weight: 500;
+  transition: background 0.2s;
+}
+
+.logout-btn-qr:hover {
+  background: #c5221f;
+}
+
+.qr-subtitle {
+  color: #8696a0;
+  font-size: 1rem;
+  margin-bottom: 2rem;
+}
+
+.qr-code-box {
+  background: white;
+  padding: 1.5rem;
+  border-radius: 15px;
+  display: inline-block;
+  margin-bottom: 2rem;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+}
+
+.qr-instructions {
+  text-align: left;
+  background: #2a3942;
+  padding: 1.5rem;
+  border-radius: 10px;
+  margin-top: 1.5rem;
+}
+
+.qr-instructions h3 {
+  color: #00a884;
+  font-size: 1.1rem;
+  margin-bottom: 1rem;
+  font-weight: 500;
+}
+
+.qr-instructions ol {
+  list-style-position: inside;
+  color: #d1d7db;
+  font-size: 0.9rem;
+  line-height: 1.8;
+}
+
+.qr-instructions li {
+  margin-bottom: 0.5rem;
+}
+
+.qr-loading,
+.qr-error {
+  text-align: center;
+}
+
+.spinner {
+  border: 4px solid #2a3942;
+  border-top: 4px solid #00a884;
+  border-radius: 50%;
+  width: 50px;
+  height: 50px;
+  animation: spin 1s linear infinite;
+  margin: 0 auto 1rem;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+.qr-error h2 {
+  color: #ea4335;
+  margin-bottom: 1rem;
+}
+
+.qr-error p {
+  color: #d1d7db;
+  margin-bottom: 1.5rem;
+}
+
+.retry-btn {
+  background: #00a884;
+  color: white;
+  border: none;
+  padding: 0.75rem 2rem;
+  border-radius: 25px;
+  cursor: pointer;
+  font-size: 1rem;
+  font-weight: 500;
+  transition: background 0.2s;
+}
+
+.retry-btn:hover {
+  background: #008069;
+}

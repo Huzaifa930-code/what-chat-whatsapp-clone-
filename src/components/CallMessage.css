@@ -1,0 +1,80 @@
+/* Call message styles - WhatsApp style */
+.call-message {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.75rem 0.5rem;
+  padding-right: 3rem;
+  min-width: 200px;
+}
+
+.call-icon-container {
+  position: relative;
+  flex-shrink: 0;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.call-icon {
+  width: 24px;
+  height: 24px;
+}
+
+.call-icon.video {
+  color: #00a884;
+}
+
+.call-icon.voice {
+  color: #00a884;
+}
+
+.message.received .call-icon.video,
+.message.received .call-icon.voice {
+  color: #00a884;
+}
+
+.message.sent .call-icon.video,
+.message.sent .call-icon.voice {
+  color: #53bdeb;
+}
+
+.call-direction {
+  position: absolute;
+  bottom: -2px;
+  right: -2px;
+  width: 14px;
+  height: 14px;
+  background: #202c33;
+  border-radius: 50%;
+  padding: 1px;
+}
+
+.message.sent .call-direction {
+  background: #005c4b;
+}
+
+.call-direction.incoming {
+  color: #00a884;
+}
+
+.call-direction.outgoing {
+  color: #8696a0;
+}
+
+.call-info {
+  flex: 1;
+}
+
+.call-type {
+  font-size: 0.9rem;
+  color: #e9edef;
+  margin-bottom: 0.25rem;
+}
+
+.call-status {
+  font-size: 0.8rem;
+  color: #8696a0;
+}
